@@ -31,6 +31,8 @@ class Item:
     def set_prev_item(self, value):
         self._prev_item = value
 
+    def __repr__(self):
+        return "Item contains %v" % self.element
 
 
 
