@@ -8,17 +8,10 @@ class TestItem(TestCase):
         Test creation of the item object
         :return:
         """
-        prev = Item()
-        next = Item()
-        item = Item(next_item=next, prev_item=prev, element="Something")
-
-    def test_element(self):
-        # creating Item with init config
-
-        self.fail()
-
-    def test_next_item(self):
-        self.fail()
-
-    def test_prev_item(self):
-        self.fail()
+        from Exceptions.exceptions import ItemCreationError
+        try:
+            prev = Item()
+            next = Item()
+            item = Item(next_item=next, prev_item=prev, element="Something")
+        except:
+            self.fail("Item cannot be created or initialized")
