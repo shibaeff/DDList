@@ -1,9 +1,7 @@
-"""
-This class is a base class for List's items
-"""
-
-
-class Item(object):
+class Item:
+    """
+    This class is a base class for List's items
+    """
     def __init__(self, element=None, next_item=None, prev_item=None):
         self._element = element
         self._next_item = next_item
@@ -22,7 +20,7 @@ class Item(object):
         return self._next_item
 
     @next_item.setter
-    def next_item(self, value):
+    def set_next_item(self, value):
         self._next_item = value
 
     @property
@@ -30,8 +28,9 @@ class Item(object):
         return self._prev_item
 
     @prev_item.setter
-    def prev_item(self, value):
+    def set_prev_item(self, value):
         self._prev_item = value
+
 
 
 
