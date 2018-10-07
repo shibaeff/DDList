@@ -77,7 +77,7 @@ class DoublyLinkedList(object):
             new_item = Item(prev_item=self._items[-1],
                             next_item=None,
                             element=element)
-            self._items[-1].next_item = new_item
+            self._items[-1]._next_item = new_item
             self._items.append(new_item)
         else:
             new_item = Item(prev_item=None,
@@ -115,6 +115,23 @@ class DoublyLinkedList(object):
                             next_item=None,
                             element=element)
             self._items.append(new_item)
+
+    def upshift(self):
+        """
+        Deletes from the beginning.
+        Raises error according to tolerance level.
+        :return: if upshift was succesful
+        """
+        if self.is_empty():
+            if self._error_tolerance is None:
+                raise UpshiftingFromEmptyList
+            else:
+                return False
+        else:
+            new = self._items[1:]
+            new[0]._prev_item = None
+            self._items = new
+            return True
 
 
 
