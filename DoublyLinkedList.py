@@ -53,6 +53,20 @@ class DoublyLinkedList(object):
         """
         return len(self._items) == 0
 
+    def first(self):
+        """
+        Returns the first element
+        :return:
+        """
+        return self._items[0]
+
+    def last(self):
+        """
+        Returns the last element
+        :return:
+        """
+        return self._items[-1]
+
     def push(self, element):
         """
         Pushes element to the tail
@@ -63,6 +77,7 @@ class DoublyLinkedList(object):
             new_item = Item(prev_item=self._items[-1],
                             next_item=None,
                             element=element)
+            self._items[-1].next_item = new_item
             self._items.append(new_item)
         else:
             new_item = Item(prev_item=None,
@@ -83,8 +98,23 @@ class DoublyLinkedList(object):
             return False
         else:
             self._items.pop(-1)
+            self._items[-1].next_item = None
             return True
 
+    def shift(self, element):
+        """Adds element to the beginning of the list"""
+        if not self.is_empty():
+            old = self._items
+            new_item = Item(prev_item=None,
+                            next_item=old[0],
+                            element=element)
+            old[0]._prev_item = new_item
+            self._items = [new_item] + old
+        else:
+            new_item = Item(prev_item=None,
+                            next_item=None,
+                            element=element)
+            self._items.append(new_item)
 
 
 
