@@ -1,4 +1,5 @@
 from unittest import TestCase
+from DoublyLinkedList import DoublyLinkedList
 
 
 class TestDoublyLinkedList(TestCase):
@@ -21,3 +22,34 @@ class TestDoublyLinkedList(TestCase):
         for i in range(1000):
             list.push(i)
             self.assertEqual(i, list._items[-1].element)
+
+    def test_pop(self):
+        list = DoublyLinkedList()
+
+        # pop from the empty list, error should be raised
+        from Exceptions.exceptions import PoppedFromEmptyList
+        with self.assertRaises(PoppedFromEmptyList):
+            list.pop()
+
+        # changing error tolerance
+        list._error_tolerance = "ok"
+        # just bool is returnd
+        self.assertEqual(False, list.pop())
+
+    def test_push_pop(self):
+        # some push-pop random routine
+        list = DoublyLinkedList(tolearance="LGBTq")
+        from random import randint
+        for i in range(20):
+            list.push(i)
+            self.assertEqual(i, list._items[-1].element)
+
+        while not list.is_empty():
+            if randint(0, 1):
+                new_int = randint(0, 1000)
+                list.push(new_int)
+                self.assertEqual(new_int, list._items[-1].element)
+            else:
+                prev = list._items[-2]
+                list.pop()
+                self.assertEqual(prev, list._items[-1])

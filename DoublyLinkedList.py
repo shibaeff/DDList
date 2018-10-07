@@ -36,11 +36,30 @@ class Item(object):
 
 
 class DoublyLinkedList(object):
-    def __init__(self):
+    def __init__(self, tolearance=None):
+        """
+        _items is a holder for the Items
+        _error_tolerance defines the the DoublyLinkedList behaviour
+        when erros occur. None means 0-tolerance, any other value
+        means high tolerance.
+        """
         self._items = []
+        self._error_tolerance = tolearance
+
+    def is_empty(self):
+        """
+        Checks if list is empy
+        :return:
+        """
+        return len(self._items) == 0
 
     def push(self, element):
-        if len(self._items):
+        """
+        Pushes element to the tail
+        :param element: value to push
+        :return:
+        """
+        if not self.is_empty():
             new_item = Item(prev_item=self._items[-1],
                             next_item=None,
                             element=element)
@@ -50,6 +69,22 @@ class DoublyLinkedList(object):
                             next_item=None,
                             element=element)
             self._items.append(new_item)
+
+    def pop(self):
+        """
+        Pops element from the tail. Returns success in terms of bool.
+        List might be empty.
+        :return:
+        """
+        from Exceptions.exceptions import PoppedFromEmptyList
+        if self.is_empty() and self._error_tolerance is None:
+            raise PoppedFromEmptyList
+        elif self.is_empty() and self._error_tolerance is not None:
+            return False
+        else:
+            self._items.pop(-1)
+            return True
+
 
 
 
