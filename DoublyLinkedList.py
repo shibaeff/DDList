@@ -45,6 +45,11 @@ class DoublyLinkedList(object):
                             next_item=None,
                             element=element)
             self._items.append(new_item)
+        else:
+            new_item = Item(prev_item=None,
+                            next_item=None,
+                            element=element)
+            self._items.append(new_item)
 
 
 

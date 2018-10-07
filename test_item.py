@@ -13,5 +13,6 @@ class TestItem(TestCase):
             prev = Item()
             next = Item()
             item = Item(next_item=next, prev_item=prev, element="Something")
+            print(item)
         except:
             self.fail("Item cannot be created or initialized")
