@@ -1,4 +1,4 @@
-class Item:(object):
+class Item(object):
     """
     This class is a base class for List's items
     """
@@ -32,11 +32,19 @@ class Item:(object):
         self._prev_item = value
 
     def __repr__(self):
-        return "Item contains %v" % self.element
+        return "Item contains " + str(self.element)
+
 
 class DoublyLinkedList(object):
     def __init__(self):
-        pass
+        self._items = []
+
+    def push(self, element):
+        if len(self._items):
+            new_item = Item(prev_item=self._items[-1],
+                            next_item=None,
+                            element=element)
+            self._items.append(new_item)
 
 
 
