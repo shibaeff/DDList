@@ -48,33 +48,40 @@ class DoublyLinkedList(object):
         self.next_item = self._tail
         self._error_tolerance = tolearance
 
+    def len(self):
+        length = 0
+        cur_item = self._head
+        while cur_item.next_item is not self._tail:
+            length += 1
+            cur_item = cur_item.next_item
+        return length
+
     def is_empty(self):
         """
         Checks if list is empy
         :return:
         """
-        return len(self._items) == 0
+        return self.len() == 0
 
     def first(self):
         """
         Returns the first element
         :return:
         """
-        return self._items[0]
+        from Exceptions.exceptions import EmptyListOperationError
+        if self.is_empty():
+            raise EmptyListOperationError
+        return self._head.next_item
 
     def last(self):
         """
         Returns the last element
         :return:
         """
-        return self._items[-1]
-
-    def len(self):
-        length = 0
-        cur_item = self._head
-        while cur_item.next_item is not None:
-            length += 1
-            cur_item = cur_item.next_item
+        from Exceptions.exceptions import EmptyListOperationError
+        if self.is_empty():
+            raise EmptyListOperationError
+        return self._tail.prev_item
 
     def push(self, element):
         """
