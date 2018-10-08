@@ -106,8 +106,8 @@ class DoublyLinkedList(object):
         elif self.is_empty() and self._error_tolerance is not None:
             return False
         else:
-            self._items.pop(-1)
-            self._items[-1].next_item = None
+            self._tail.prev_item = self._tail.prev_item.prev_item
+            self._tail.prev_item.next_item = self._tail
             return True
 
     def shift(self, element):

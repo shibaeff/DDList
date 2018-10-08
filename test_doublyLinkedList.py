@@ -26,3 +26,9 @@ class TestDoublyLinkedList(TestCase):
         list = DoublyLinkedList()
         list.push(1)
         self.assertEqual(list.first(), list.last())
+
+    def test_pop_empty(self):
+        from Exceptions.exceptions import PoppedFromEmptyList
+        with self.assertRaises(PoppedFromEmptyList):
+            list = DoublyLinkedList()
+            list.pop()
