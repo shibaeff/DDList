@@ -8,7 +8,13 @@ class ItemCreationError(DoublyLinkedListException):
         self.__context__ = "Error while creation of Item. %v" % item
 
 
-class PoppedFromEmptyList(Exception):
+class PoppedFromEmptyList(DoublyLinkedListException):
     def __init__(self):
         pass
+
+
+class UpshiftingFromEmptyList(DoublyLinkedListException):
+    def __init__(self):
+        pass
+
 

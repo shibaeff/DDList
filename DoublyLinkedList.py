@@ -133,5 +133,34 @@ class DoublyLinkedList(object):
             self._items = new
             return True
 
+    def contains(self, element):
+        """
+        Determines whether value is in the list
+        :param element: value to check
+        :return: success
+        """
+        cur_item = self.first()
+        while cur_item != self.last():
+            if cur_item.element == element:
+                return True
+            else:
+                cur_item = cur_item.next_item
+        return cur_item.element == element
 
+    def delete(self, element):
+        """
+        Deletes item by value
+        :param element:
+        :return: deletion success
+        """
+        cur_item = self.first()
+        while cur_item != self.last():
+            if cur_item.element == element:
+                cur_item.prev_item.next_item = cur_item.next_item
+                cur_item.next_item.prev_item = cur_item.prev_item
+                self._items.remove(cur_item)
+                return True
+            else:
+                cur_item = cur_item.next_item
+        return cur_item.element == element
 

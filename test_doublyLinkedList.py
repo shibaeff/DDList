@@ -77,5 +77,12 @@ class TestDoublyLinkedList(TestCase):
             else:
                 next = list._items[1]
                 list.upshift()
-                self.assertEqual(prev, list._items[0])
+                self.assertEqual(next, list._items[0])
 
+    def test_contains(self):
+        list = DoublyLinkedList(tolearance="straight")
+        for i in range(20):
+            list.shift(i)
+            self.assertEqual(i, list._items[0].element)
+        for i in range(20):
+            self.assertEqual(True, list.contains(i))
