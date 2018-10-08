@@ -67,6 +67,13 @@ class DoublyLinkedList(object):
         """
         return self._items[-1]
 
+    def len(self):
+        length = 0
+        cur_item = self._head
+        while cur_item.next_item is not None:
+            length += 1
+            cur_item = cur_item.next_item
+
     def push(self, element):
         """
         Pushes element to the tail
