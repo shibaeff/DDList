@@ -89,7 +89,13 @@ class DoublyLinkedList(object):
         :param element: value to push
         :return:
         """
+        new_item = Item(element=element)
+        self._tail.prev_item.next_item = new_item
+        new_item.prev_item = self._tail.prev_item
 
+        new_item.next_item = self._tail
+        self._tail.prev_item = new_item
+        assert self._tail.next_item is None
 
     def pop(self):
         """

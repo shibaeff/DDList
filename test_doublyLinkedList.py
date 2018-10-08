@@ -14,3 +14,9 @@ class TestDoublyLinkedList(TestCase):
             print(list.first())
         with self.assertRaises(EmptyListOperationError):
             print(list.last())
+
+    def test_push_1(self):
+        list = DoublyLinkedList()
+        for i in range(1000):
+            list.push(i)
+        self.assertEqual(1000, list.len())
