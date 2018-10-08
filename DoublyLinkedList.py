@@ -43,7 +43,7 @@ class DoublyLinkedList(object):
         when erros occur. None means 0-tolerance, any other value
         means high tolerance.
         """
-        self._items = []
+        self._head = Item()
         self._error_tolerance = tolearance
 
     def is_empty(self):
