@@ -47,14 +47,10 @@ class DoublyLinkedList(object):
         self._tail = Item(prev_item=self._head)
         self._head.next_item = self._tail
         self._error_tolerance = tolearance
+        self._length = 0
 
     def len(self):
-        length = 0
-        cur_item = self._head
-        while cur_item.next_item is not self._tail:
-            length += 1
-            cur_item = cur_item.next_item
-        return length
+        return self._length
 
     def is_empty(self):
         """
@@ -95,6 +91,7 @@ class DoublyLinkedList(object):
 
         new_item.next_item = self._tail
         self._tail.prev_item = new_item
+        self._length += 1
         assert self._tail.next_item is None
 
     def pop(self):
