@@ -20,3 +20,9 @@ class TestDoublyLinkedList(TestCase):
         for i in range(1000):
             list.push(i)
         self.assertEqual(1000, list.len())
+
+    def test_push_empty(self):
+        from DoublyLinkedList import DoublyLinkedList
+        list = DoublyLinkedList()
+        list.push(1)
+        self.assertEqual(list.first(), list.last())
