@@ -12,7 +12,7 @@ class Item(object):
         return self._element
 
     @element.setter
-    def set_element(self, value):
+    def element(self, value):
         self._element = value
 
     @property
@@ -20,7 +20,7 @@ class Item(object):
         return self._next_item
 
     @next_item.setter
-    def set_next_item(self, value):
+    def next_item(self, value):
         self._next_item = value
 
     @property
@@ -28,7 +28,7 @@ class Item(object):
         return self._prev_item
 
     @prev_item.setter
-    def set_prev_item(self, value):
+    def prev_item(self, value):
         self._prev_item = value
 
     def __repr__(self):
@@ -45,7 +45,7 @@ class DoublyLinkedList(object):
         """
         self._head = Item()
         self._tail = Item(prev_item=self._head)
-        self.next_item = self._tail
+        self._head.next_item = self._tail
         self._error_tolerance = tolearance
 
     def len(self):
