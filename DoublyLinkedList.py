@@ -44,6 +44,8 @@ class DoublyLinkedList(object):
         means high tolerance.
         """
         self._head = Item()
+        self._tail = Item(prev_item=self._head)
+        self.next_item = self._tail
         self._error_tolerance = tolearance
 
     def is_empty(self):
@@ -80,17 +82,7 @@ class DoublyLinkedList(object):
         :param element: value to push
         :return:
         """
-        if not self.is_empty():
-            new_item = Item(prev_item=self._items[-1],
-                            next_item=None,
-                            element=element)
-            self._items[-1]._next_item = new_item
-            self._items.append(new_item)
-        else:
-            new_item = Item(prev_item=None,
-                            next_item=None,
-                            element=element)
-            self._items.append(new_item)
+
 
     def pop(self):
         """
